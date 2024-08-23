@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<title>Create New Book</title>
+
+  <!-- bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	
+	<!-- reference CSS file -->
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css" >
+	
+</head>
+
+<body>
+  <br>
+    <div class="container">
+      <center><h2>Create new book record</h2></center><br>
+      <!-- InserUpdate Form -->
+      <form action="#" th:action="@{/admin/save}" method="POST" class="form-horizontal" th:object="${book}">
+        <!-- Title -->
+        <div style="margin-bottom: 25px;" class="input-group">
+          <Label for="title" class="col-sm-2 col-form-label">Title*: </Label>
+          <div class="col-sm-10">
+            <input type="text" name="title" class="form-control" th:field="*{title}"/>
+            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></span>
+          </div>
+        </div>
+        <!-- Author -->
+        <div style="margin-bottom: 25px;" class="input-group">
+          <Label for="author" class="col-sm-2 col-form-label">Author*: </Label>
+          <div class="col-sm-10">
+            <input type="text" name="author" class="form-control" th:field="*{author}"/>
+            <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}" class="text-danger"></span>
+          </div>
+        </div>
+        <!-- Isbn -->
+        <div style="margin-bottom: 25px;" class="input-group">
+          <Label for="isbn" class="col-sm-2 col-form-label">Isbn*: </Label>
+          <div class="col-sm-10">
+            <input type="text" name="isbn" class="form-control" th:field="*{isbn}"/>
+            <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}" class="text-danger"></span>
+          </div>
+        </div>
+        <!-- Price -->
+        <div style="margin-bottom: 25px;" class="input-group">
+          <Label for="price" class="col-sm-2 col-form-label">Price*: </Label>
+          <div class="col-sm-10">
+            <input type="number" name="price" class="form-control" th:field="*{price}" min=0 step="0.01"/>
+            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+          </div>
+        </div>
+        <!-- Quantity -->
+        <div style="margin-bottom: 25px;" class="input-group">
+          <Label for="inventory" class="col-sm-2 col-form-label">Inventory: </Label>
+          <div class="col-sm-10">
+            <input type="number" name="inventory" class="form-control" min=0 th:field="*{inventory}"/>
+            <span th:if="${#fields.hasErrors('inventory')}" th:errors="*{inventory}" class="text-danger"></span>
+          </div>
+        </div>
+        <!-- Description -->
+        <div style="margin-bottom: 25px;" class="input-group">
+          <Label for="description" class="col-sm-2 col-form-label">Description: </Label>
+          <div class="col-sm-10">
+            <textarea name="description" rows="4" cols="50" class="form-control" th:field="*{description}"></textarea>
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <div style="margin-top: 10px;" class="form-group">
+          <div class="col-sm-12 text-center">
+            <a type="button" class="btn btn-secondary me-4" th:href="@{/}">Cancel</a>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
